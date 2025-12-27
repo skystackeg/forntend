@@ -86,45 +86,46 @@
 }
 
 .header__logo-image {
-  height: 160px;
-  width: 480px;
+  height: 60px;
+  width: 60px;
   max-width: none;
   object-fit: contain;
   display: block;
   
-  // Responsive logo sizing with fixed dimensions
+  // Responsive logo sizing - square format for favicon
   @include mobile-xs {
-    height: 140px;
-    width: 420px;
+    height: 50px;
+    width: 50px;
   }
 
   @include mobile-sm {
-    height: 144px;
-    width: 432px;
+    height: 52px;
+    width: 52px;
   }
 
   @include mobile-md {
-    height: 152px;
-    width: 456px;
+    height: 54px;
+    width: 54px;
   }
 
   @include mobile-lg {
-    height: 156px;
-    width: 468px;
+    height: 56px;
+    width: 56px;
   }
 
   @include tablet {
-    height: 168px;
-    width: 504px;
+    height: 58px;
+    width: 58px;
   }
 
   @include desktop {
-    height: 180px;
-    width: 540px;
+    height: 60px;
+    width: 60px;
   }
   
   @include desktop-lg {
-    width: 520px;
+    height: 64px;
+    width: 64px;
   }
 }
 
@@ -142,24 +143,24 @@
 .header__nav-list {
   display: flex;
   list-style: none;
-  gap: $spacing-4;
+  gap: $spacing-3;
   margin: 0;
   padding: 0;
   
   @include tablet {
-    gap: $spacing-5;
+    gap: $spacing-4;
   }
   
   @include desktop {
-    gap: $spacing-6;
+    gap: $spacing-5;
   }
   
   @include desktop-lg {
-    gap: $spacing-8;
+    gap: $spacing-6;
   }
   
   @include desktop-xl {
-    gap: $spacing-10;
+    gap: $spacing-7;
   }
 }
 

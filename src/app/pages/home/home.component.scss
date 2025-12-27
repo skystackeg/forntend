@@ -9,14 +9,7 @@
   @include flex-center;
   background: linear-gradient(135deg, rgba($primary, 0.02) 0%, rgba($secondary, 0.03) 100%);
   
-  // Margin top for mobile and tablet (header clearance)
-  margin-top: $header-height-mobile;
-  @include tablet {
-    margin-top: $header-height-tablet;
-  }
-  @include desktop {
-    margin-top: 0; // Remove margin on desktop
-  }
+  // Header clearance is handled by main-content margin-top
   
   // Responsive min-height
   min-height: 85vh;

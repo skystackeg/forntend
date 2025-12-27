@@ -10,14 +10,7 @@
   background: linear-gradient(135deg, rgba($secondary, 0.05) 0%, rgba($primary, 0.05) 100%);
   text-align: center;
 
-  // Margin top for mobile and tablet (header clearance)
-  margin-top: $header-height-mobile;
-  @include tablet {
-    margin-top: $header-height-tablet;
-  }
-  @include desktop {
-    margin-top: 0; // Remove margin on desktop
-  }
+  // Header clearance is handled by main-content margin-top
 
   // Responsive padding
   padding: $spacing-16 0 $spacing-10 0;

@@ -11,6 +11,15 @@
 
 html {
   /* Remove scroll-behavior: smooth to prevent conflicts with GSAP animations */
+  
+  // Prevent horizontal scrolling
+  overflow-x: hidden;
+  max-width: 100vw;
+  
+  // Better text rendering on mobile
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -22,6 +31,13 @@ body {
   background-color: $background;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  // Prevent horizontal scrolling on mobile
+  overflow-x: hidden;
+  max-width: 100vw;
+  
+  // Better touch scrolling on mobile
+  -webkit-overflow-scrolling: touch;
 }
 
 // Typography
@@ -177,10 +193,24 @@ a {
 // Button utilities
 .btn-primary {
   @include button-primary;
+  
+  // Mobile touch-friendly sizing
+  @include mobile-only {
+    min-height: 44px; // iOS recommended touch target
+    padding: $spacing-3 $spacing-5;
+    font-size: $font-size-base;
+  }
 }
 
 .btn-secondary {
   @include button-secondary;
+  
+  // Mobile touch-friendly sizing
+  @include mobile-only {
+    min-height: 44px; // iOS recommended touch target
+    padding: $spacing-3 $spacing-5;
+    font-size: $font-size-base;
+  }
 }
 
 // Grid system
@@ -425,4 +455,74 @@ a {
 ::selection {
   background-color: rgba($primary, 0.2);
   color: $text-primary;
+}
+
+// ===== MOBILE COMPATIBILITY FIXES =====
+@include mobile-only {
+  // Prevent text overflow and ensure readability
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  // Images should be responsive
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  // Form inputs should be touch-friendly
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px !important; // Prevents zoom on iOS
+    min-height: 44px; // Touch-friendly size
+    padding: $spacing-3 $spacing-4;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  // Ensure containers don't overflow
+  .container {
+    width: 100%;
+    max-width: 100vw;
+    padding-left: $spacing-4;
+    padding-right: $spacing-4;
+    box-sizing: border-box;
+  }
+  
+  // Prevent horizontal overflow on all sections
+  section {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  // Ensure text doesn't overflow
+  h1, h2, h3, h4, h5, h6, p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  // Touch-friendly links
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  // Tables should scroll horizontally if needed
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
 }

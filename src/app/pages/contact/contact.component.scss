@@ -10,14 +10,7 @@
   background: linear-gradient(135deg, rgba($accent, 0.02) 0%, rgba($primary, 0.03) 100%);
   text-align: center;
   
-  // Margin top for mobile and tablet (header clearance)
-  margin-top: $header-height-mobile;
-  @include tablet {
-    margin-top: $header-height-tablet;
-  }
-  @include desktop {
-    margin-top: 0; // Remove margin on desktop
-  }
+  // Header clearance is handled by main-content margin-top
   
   // Responsive padding
   padding: $spacing-16 0 $spacing-10 0;
@@ -556,19 +549,24 @@
 .form-textarea {
   border: 2px solid rgba($neutral-dark, 0.1);
   border-radius: $border-radius;
-  font-size: $font-size-base;
+  font-size: 16px; // Prevents iOS zoom on focus
   transition: $transition-all;
   background: white;
+  width: 100%;
+  box-sizing: border-box;
   
   // Responsive padding
   padding: $spacing-3;
+  min-height: 44px; // Touch-friendly size
   
   @include mobile-sm {
     padding: $spacing-4;
+    font-size: 16px; // Keep 16px to prevent zoom
   }
   
   @include tablet {
     padding: $spacing-4;
+    font-size: $font-size-base;
   }
 
   &:focus {
@@ -597,20 +595,22 @@
 .form-textarea {
   resize: vertical;
   font-family: inherit;
+  font-size: 16px; // Prevents iOS zoom on focus
   
   // Responsive min-height
-  min-height: 100px;
+  min-height: 120px; // Increased for better mobile UX
   
   @include mobile-sm {
-    min-height: 110px;
+    min-height: 130px;
   }
   
   @include mobile-md {
-    min-height: 120px;
+    min-height: 140px;
   }
   
   @include tablet {
-    min-height: 120px;
+    min-height: 150px;
+    font-size: $font-size-base;
   }
 }
 
