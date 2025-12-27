@@ -1,0 +1,354 @@
+// src/app/components/footer/footer.component.scss
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+// Add this at the top of your footer component styles
+.footer {
+  // Force font loading and prevent layout shifts
+  font-display: swap;
+  
+  // Reserve space for fonts before they load
+  &, * {
+    font-display: swap;
+  }
+}
+
+// Prevent font loading shifts
+.footer__logo-text,
+.footer__column-title {
+  // Reserve minimum height before fonts load
+  min-height: 1.2em;
+  
+  // Prevent text jumping during font loading
+  font-display: swap;
+  text-rendering: optimizeSpeed;
+}
+.footer {
+  background: $gradient-primary;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  
+  // Add will-change to prepare for animation
+  will-change: transform;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(black, 0.1);
+    z-index: -1; // Move behind content to not block clicks
+
+    // ADD THESE PROPERTIES to prevent layout shift:
+    transform: translateZ(0); // Force hardware acceleration
+    will-change: auto; // Prepare for GPU rendering
+    backface-visibility: hidden; // Prevent flickering
+  }
+}
+.footer-content {
+  @include section-padding;
+  
+  // Mobile first approach - 320px+
+  padding: $spacing-8 0;
+
+  @media (min-width: 480px) {
+    padding: $spacing-10 0;
+  }
+
+  @media (min-width: 768px) {
+    padding: $spacing-12 0;
+  }
+
+  @media (min-width: 1024px) {
+    padding: $spacing-16 0;
+  }
+}
+
+.footer__main {
+  display: grid;
+  gap: $spacing-8;
+  margin-bottom: $spacing-8;
+  
+  // Mobile: single column
+  grid-template-columns: 1fr;
+
+  @media (min-width: 768px) {
+    gap: $spacing-10;
+    margin-bottom: $spacing-10;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 2fr;
+    gap: $spacing-16;
+    margin-bottom: $spacing-12;
+  }
+}
+
+.footer__brand {
+  // Mobile: full width
+  max-width: 100%;
+  
+  @media (min-width: 480px) {
+    max-width: 400px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 380px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 420px;
+  }
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  margin-bottom: $spacing-4;
+  justify-content: flex-start;
+
+  @media (min-width: 480px) {
+    margin-bottom: $spacing-5;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: $spacing-6;
+  }
+}
+
+.footer__logo-image {
+  height: 120px;
+  width: 360px;
+  max-width: none;
+  object-fit: contain;
+  display: block;
+
+  @media (min-width: 375px) {
+    height: 126px;
+    width: 378px;
+  }
+
+  @media (min-width: 480px) {
+    height: 132px;
+    width: 396px;
+  }
+
+  @media (min-width: 768px) {
+    height: 138px;
+    width: 414px;
+  }
+
+  @media (min-width: 1024px) {
+    height: 144px;
+    width: 432px;
+  }
+
+  @media (min-width: 1200px) {
+    height: 150px;
+    width: 450px;
+  }
+}
+
+.footer__logo-text {
+  font-family: $font-family-heading;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: white;
+
+  @media (min-width: 480px) {
+    font-size: $font-size-xl;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.footer__description {
+  @include body-base;
+  color: rgba(white, 0.9);
+  margin-bottom: $spacing-5;
+  line-height: 1.6;
+  font-size: $font-size-sm;
+
+  @media (min-width: 480px) {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-6;
+  }
+
+  @media (min-width: 1200px) {
+    line-height: 1.7;
+  }
+}
+
+
+
+.footer__links {
+  @include grid-responsive(1, 2, 3, 3);
+  gap: $spacing-6;
+
+  @include mobile-sm {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-7;
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-8;
+  }
+
+  @include desktop {
+    gap: $spacing-10;
+  }
+
+  @include desktop-xl {
+    gap: $spacing-12;
+  }
+
+  @include desktop-2xl {
+    gap: $spacing-16;
+  }
+}
+
+.footer__column {
+  min-width: 0; // Prevent grid blowout
+}
+
+.footer__column-title {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-semibold;
+  color: white;
+  font-size: $font-size-base;
+  @include spacing-responsive(margin-bottom, $spacing-3, $spacing-4, $spacing-4);
+
+  @include mobile-md {
+    font-size: $font-size-lg;
+  }
+
+  @include desktop-xl {
+    font-size: $font-size-xl;
+  }
+}
+
+.footer__column-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__column-list li {
+  margin-bottom: $spacing-2;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include mobile-md {
+    margin-bottom: $spacing-3;
+  }
+}
+
+.footer__column-link {
+  color: rgba(white, 0.8);
+  text-decoration: none;
+  transition: $transition-colors;
+  word-break: break-word;
+  font-size: $font-size-xs;
+
+  @include mobile-sm {
+    font-size: $font-size-sm;
+  }
+
+  @include desktop-xl {
+    font-size: $font-size-base;
+  }
+
+  &:hover {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+.footer__column-text {
+  color: rgba(white, 0.7);
+  word-break: break-word;
+  font-size: $font-size-xs;
+
+  @include mobile-sm {
+    font-size: $font-size-sm;
+  }
+
+  @include desktop-xl {
+    font-size: $font-size-base;
+  }
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(white, 0.2);
+  @include spacing-responsive(padding-top, $spacing-4, $spacing-5, $spacing-6);
+}
+
+.footer__bottom-content {
+  @include flex-between;
+  @include flex-column;
+  gap: $spacing-4;
+  @include text-align-responsive(center, center, left);
+
+  @include tablet {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+.footer__copyright {
+  color: rgba(white, 0.8);
+  margin: 0;
+  font-size: $font-size-xs;
+
+  @include mobile-sm {
+    font-size: $font-size-sm;
+  }
+
+  @include desktop-xl {
+    font-size: $font-size-base;
+  }
+}
+
+.footer__legal {
+  @include flex-center;
+  gap: $spacing-3;
+  flex-wrap: wrap;
+
+  @include mobile-sm {
+    gap: $spacing-4;
+  }
+
+  @include tablet {
+    gap: $spacing-6;
+    justify-content: flex-end;
+  }
+}
+
+.footer__legal-link {
+  color: rgba(white, 0.7);
+  text-decoration: none;
+  transition: $transition-colors;
+  white-space: nowrap;
+  font-size: $font-size-xs;
+
+  @include mobile-sm {
+    font-size: $font-size-sm;
+  }
+
+  @include desktop-xl {
+    font-size: $font-size-base;
+  }
+
+  &:hover {
+    color: white;
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,75 @@
+<!-- src/app/components/footer/footer.component.html -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Main Footer Content -->
+      <div class="footer__main">
+        <div class="footer__brand">
+          <div class="footer__logo">
+<img 
+    src="assets/images/logo-footer.png" 
+    alt="Vega Sky" 
+    class="footer__logo-image" 
+    width="360" 
+    height="120" 
+    loading="lazy"
+    decoding="async">
+          </div>
+          <p class="footer__description">
+            Transforming businesses through innovative AI solutions and cutting-edge technology. 
+            We empower organizations to thrive in the digital future.
+          </p>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__column">
+            <h4 class="footer__column-title">Services</h4>
+            <ul class="footer__column-list">
+              <li><a routerLink="/services" fragment="erp-systems" class="footer__column-link">ERP systems</a></li>
+              <li><a routerLink="/services" fragment="digital-transformation" class="footer__column-link">Digital Transformation</a></li>
+              <li><a routerLink="/services" fragment="ai-solutions" class="footer__column-link">AI Solutions</a></li>
+              <li><a routerLink="/services" fragment="cloud-infrastructure" class="footer__column-link">Cloud Infrastructure</a></li>
+              <li><a routerLink="/services" fragment="app-development" class="footer__column-link">App Development</a></li>
+              <li><a routerLink="/services" fragment="software-engineering" class="footer__column-link">Software Engineering</a></li>
+              <li><a routerLink="/services" fragment="data-intelligence" class="footer__column-link">Data Intelligence</a></li>
+              <li><a routerLink="/services" fragment="quality-assurance" class="footer__column-link">Quality Assurance</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__column">
+            <h4 class="footer__column-title">Company</h4>
+            <ul class="footer__column-list">
+              <li><a routerLink="/about" class="footer__column-link">About Us</a></li>
+              <li><a routerLink="/about" fragment="vision" class="footer__column-link">Our Vision</a></li>
+              <li><a routerLink="/about" fragment="approach" class="footer__column-link">Our Approach</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__column">
+            <h4 class="footer__column-title">Contact</h4>
+            <ul class="footer__column-list">
+              <li><a href="mailto:info@vega-sky.com" class="footer__column-link">info&#64;vega-sky.com</a></li>
+              <li><a href="tel:+971569728080" class="footer__column-link">+971 56 972 8080</a></li>
+              <li><span class="footer__column-text">Dubai, Business Bay</span></li>
+              <li><span class="footer__column-text">Silver Tower, Office 2607</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer__bottom">
+        <div class="footer__bottom-content">
+          <p class="footer__copyright">
+            © {{ currentYear }} Vega Sky. All rights reserved.
+          </p>
+          <div class="footer__legal">
+            <a href="/PrivacyandPolicy" class="footer__legal-link">Privacy Policy</a>
+            <a href="/TermsandConditions" class="footer__legal-link">Terms and Conditions</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

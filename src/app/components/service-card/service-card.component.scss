@@ -1,0 +1,202 @@
+// src/app/components/service-card/service-card.component.scss
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.service-card {
+  padding: $spacing-8;
+  cursor: pointer;
+  border: 1px solid rgba($primary, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($primary, 0.05), transparent);
+    transition: left 0.5s ease;
+  }
+
+  &:hover {
+    border-color: rgba($primary, 0.2);
+    
+    &::before {
+      left: 100%;
+    }
+
+    .service-card__icon {
+      transform: scale(1.1);
+    }
+
+    .service-card__arrow {
+      transform: translateX(4px);
+    }
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($primary, 0.2);
+  }
+
+  @include mobile {
+    padding: $spacing-6;
+  }
+}
+
+.service-card__icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: $spacing-6;
+  transition: transform 0.3s ease;
+
+  // Center icons on tablet and mobile
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  :global(svg) {
+    width: 100%;
+    height: 100%;
+    fill: $primary;
+    transition: fill 0.3s ease;
+  }
+
+  // Mobile specific sizing and spacing
+  @include mobile-xs {
+    width: 48px;
+    height: 48px;
+    margin-bottom: $spacing-4;
+  }
+
+  @include mobile-sm {
+    width: 52px;
+    height: 52px;
+    margin-bottom: $spacing-5;
+  }
+
+  @include mobile-md {
+    width: 56px;
+    height: 56px;
+    margin-bottom: $spacing-6;
+  }
+
+  @include mobile-lg {
+    width: 58px;
+    height: 58px;
+    margin-bottom: $spacing-6;
+  }
+
+  // Tablet specific sizing
+  @include tablet {
+    width: 64px;
+    height: 64px;
+    margin-bottom: $spacing-7;
+  }
+
+  // Desktop - align to left and larger size
+  @include desktop {
+    margin-left: 0;
+    margin-right: 0;
+    width: 70px;
+    height: 70px;
+    margin-bottom: $spacing-8;
+  }
+
+  @include desktop-lg {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+.service-card__content {
+  flex: 1;
+}
+
+.service-card__title {
+  @include heading-3;
+  margin-bottom: $spacing-4;
+  font-size: $font-size-xl;
+  
+  @include mobile {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-3;
+  }
+}
+
+.service-card__description {
+  @include body-base;
+  margin-bottom: $spacing-6;
+  color: $text-secondary;
+  line-height: 1.6;
+
+  @include mobile {
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-4;
+  }
+}
+
+.service-card__cta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  color: $primary;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-sm;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: darken($primary, 10%);
+  }
+}
+
+.service-card__cta-text {
+  transition: color 0.3s ease;
+}
+
+.service-card__arrow {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+// Responsive text alignment
+@include mobile-xs {
+  .service-card {
+    text-align: center;
+  }
+}
+
+@include mobile-sm {
+  .service-card {
+    text-align: center;
+  }
+}
+
+@include mobile-md {
+  .service-card {
+    text-align: center;
+  }
+}
+
+@include mobile-lg {
+  .service-card {
+    text-align: center;
+  }
+}
+
+@include tablet {
+  .service-card {
+    text-align: center;
+  }
+}
+
+@include desktop {
+  .service-card {
+    text-align: left;
+  }
+}
