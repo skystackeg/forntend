@@ -10,32 +10,32 @@
 
 .main-content {
   flex: 1;
-  // Account for fixed header - calculated based on logo height + padding
-  // Mobile-xs: 50px logo + 24px padding = 74px
-  margin-top: 74px;
+  // Account for fixed header - calculated based on logo height + padding (3x larger logo)
+  // Mobile-xs: 135px logo + 24px padding = 159px
+  margin-top: 159px;
   
   @include mobile-sm {
-    // 52px logo + 28px padding = 80px
-    margin-top: 80px;
+    // 144px logo + 28px padding = 172px
+    margin-top: 172px;
   }
   
   @include mobile-md {
-    // 54px logo + 32px padding = 86px
-    margin-top: 86px;
+    // 150px logo + 32px padding = 182px
+    margin-top: 182px;
   }
   
   @include tablet {
-    // 58px logo + 32px padding = 90px
-    margin-top: 90px;
+    // 165px logo + 32px padding = 197px
+    margin-top: 197px;
   }
   
   @include desktop {
-    // 60px logo + 40px padding = 100px
-    margin-top: 100px;
+    // 180px logo + 40px padding = 220px
+    margin-top: 220px;
   }
   
   @include desktop-lg {
-    // 64px logo + 40px padding = 104px
-    margin-top: 104px;
+    // 192px logo + 40px padding = 232px
+    margin-top: 232px;
   }
 }
