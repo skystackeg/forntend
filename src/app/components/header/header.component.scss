@@ -165,13 +165,14 @@
 
 .header__nav-link {
   font-weight: $font-weight-medium;
-  color: $text-primary;
+  color: $text-secondary;
   text-decoration: none;
   padding: $spacing-2 $spacing-3;
   border-radius: $border-radius;
   transition: all 0.3s ease;
   position: relative;
   font-size: $font-size-sm;
+  display: inline-block;
   
   @include desktop {
     padding: $spacing-2 $spacing-4;
@@ -186,33 +187,34 @@
     font-size: $font-size-lg;
   }
   
-  // Hover underline effect
+  // Gradient underline effect (teal to purple)
   &::after {
     content: '';
     position: absolute;
-    bottom: -2px;
-    left: 50%;
+    bottom: -4px;
+    left: 0;
     width: 0;
     height: 2px;
-    background: $gradient-primary;
-    transform: translateX(-50%);
+    background: linear-gradient(90deg, $secondary 0%, $primary 100%);
+    transform-origin: left;
     transition: width 0.3s ease;
   }
   
+  // Hover state - show underline and change text color
   &:hover {
     color: $primary;
-    background: rgba($primary, 0.05);
     
     &::after {
-      width: 80%;
+      width: 100%;
     }
   }
   
+  // Active state - purple text with full gradient underline
   &.active {
     color: $primary;
     
     &::after {
-      width: 80%;
+      width: 100%;
     }
   }
 }
